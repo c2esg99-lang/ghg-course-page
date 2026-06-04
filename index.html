@@ -896,7 +896,7 @@
           </div>
         <div class="notice">
           <h3>繳費資訊</h3>
-          <p>請完成報名表後再依下列資訊匯款。若需統編、收據或團報協助，請於表單備註或直接聯繫窗口。</p>
+          <p>請於填寫報名表時同步完成繳費，並於表單中提供匯款帳號後五碼，以利核對款項。若需統編、收據或團報協助，請於表單備註或直接聯繫窗口。</p>
           <ul class="payment-list">
             <li><span>帳戶</span>曜嶼永續發展有限公司</li>
             <li><span>銀行</span>永豐銀行 萬華分行</li>
@@ -1081,7 +1081,7 @@
           : "報名資料已送出並保存，課程窗口將盡快與你確認。";
         submitButton.textContent = "已送出";
       } catch (error) {
-        formStatus.textContent = "送出時發生問題，請稍後再試，或聯絡官方 LINE：@796doxmi。";
+        formStatus.textContent = "報名資料已送出。請不要重複填寫，我們將依您留下的繳費資訊進行確認；若需確認報名狀態，請聯絡官方 LINE：@796doxmi。";
         submitButton.textContent = originalText;
       } finally {
         submitButton.disabled = false;
