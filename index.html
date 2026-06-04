@@ -1,0 +1,1086 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GHG Protocol 溫室氣體盤查實算工作坊</title>
+  <meta name="description" content="18 小時硬核實算，從數據焦慮到 IFRS 實戰全攻略。台北、台南兩梯次開課。">
+  <style>
+    :root {
+      --green-950: #123e2a;
+      --green-850: #185434;
+      --green-700: #1f6a42;
+      --green-100: #e9f4e8;
+      --green-50: #f6fbf4;
+      --gold: #d98a08;
+      --line: #d9e7d6;
+      --ink: #25352c;
+      --muted: #5f6f65;
+      --paper: #fffdf8;
+      --cream: #f8f3e9;
+      --shadow: 0 18px 50px rgba(18, 62, 42, .14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", Arial, sans-serif;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, rgba(246, 251, 244, .94), rgba(255, 253, 248, .98)),
+        url("課程詳情.png") center top / cover fixed;
+      line-height: 1.72;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 16px;
+      top: -80px;
+      z-index: 20;
+      padding: 10px 14px;
+      background: var(--green-950);
+      color: white;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+
+    .skip-link:focus {
+      top: 16px;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 253, 248, .88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(217, 231, 214, .8);
+    }
+
+    .nav-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--green-950);
+      font-weight: 800;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: conic-gradient(from 35deg, #81ba68, #1f6a42, #d98a08, #81ba68);
+      display: inline-block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      padding: 8px 10px;
+      color: var(--green-850);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .section {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 72px 20px;
+    }
+
+    .hero {
+      min-height: calc(100vh - 50px);
+      display: grid;
+      align-items: center;
+      padding-top: 28px;
+      padding-bottom: 48px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+      gap: 36px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-weight: 900;
+      font-size: 18px;
+      margin: 0 0 12px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: var(--green-950);
+      line-height: 1.18;
+      margin: 0;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      font-size: clamp(42px, 7vw, 84px);
+      max-width: 850px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      margin-bottom: 18px;
+    }
+
+    h3 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .hero-subtitle {
+      margin: 20px 0 26px;
+      font-size: 21px;
+      max-width: 720px;
+      color: #31483a;
+    }
+
+    .hero-points {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 0 0 28px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .hero-points li {
+      background: rgba(255, 253, 248, .84);
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--green-700);
+      padding: 13px 15px;
+      border-radius: 6px;
+      font-weight: 800;
+      box-shadow: 0 10px 26px rgba(18, 62, 42, .08);
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 18px;
+      border-radius: 6px;
+      border: 2px solid var(--green-850);
+      font-weight: 900;
+      text-decoration: none;
+      background: var(--green-850);
+      color: white;
+      box-shadow: 0 12px 28px rgba(18, 62, 42, .18);
+    }
+
+    .btn.secondary {
+      background: var(--paper);
+      color: var(--green-850);
+      box-shadow: none;
+    }
+
+    .hero-card {
+      background: rgba(255, 253, 248, .92);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      border-radius: 8px;
+    }
+
+    .poster {
+      display: block;
+      width: 100%;
+      border-radius: 6px;
+      box-shadow: 0 18px 40px rgba(18, 62, 42, .18);
+    }
+
+    .caption {
+      margin: 12px 0 0;
+      font-size: 14px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .intro-band {
+      background: var(--green-950);
+      color: white;
+    }
+
+    .intro-band .section {
+      padding-top: 56px;
+      padding-bottom: 56px;
+    }
+
+    .intro-band h2 {
+      color: white;
+    }
+
+    .intro-copy {
+      display: grid;
+      grid-template-columns: .78fr 1.22fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .quote-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .quote-list li {
+      background: rgba(255, 255, 255, .1);
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 6px;
+      padding: 16px;
+      font-size: 19px;
+      font-weight: 700;
+    }
+
+    .section-lead {
+      max-width: 820px;
+      margin: 0 0 26px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: rgba(255, 253, 248, .92);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px;
+      box-shadow: 0 12px 32px rgba(18, 62, 42, .08);
+    }
+
+    .card strong {
+      color: var(--green-850);
+    }
+
+    .sessions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .session-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-top: 8px solid var(--green-700);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .session-card.tainan {
+      border-top-color: var(--gold);
+    }
+
+    .session-date {
+      color: var(--green-850);
+      font-size: 28px;
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    .meta {
+      margin: 14px 0 18px;
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+    }
+
+    .meta li {
+      margin-bottom: 8px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .day {
+      display: grid;
+      grid-template-columns: 140px minmax(0, 1fr);
+      gap: 18px;
+      padding: 24px;
+      background: rgba(255, 253, 248, .94);
+      border: 1px solid var(--line);
+      border-left: 7px solid var(--green-700);
+      border-radius: 8px;
+    }
+
+    .day-label {
+      color: var(--gold);
+      font-weight: 900;
+      font-size: 20px;
+      text-transform: uppercase;
+    }
+
+    .day ul,
+    .plain-list {
+      margin: 12px 0 0;
+      padding-left: 1.2em;
+    }
+
+    .day li,
+    .plain-list li {
+      margin-bottom: 5px;
+    }
+
+    .teacher {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      gap: 26px;
+      align-items: center;
+    }
+
+    .teacher-photo {
+      width: 260px;
+      min-height: 300px;
+      border-radius: 50% 50% 46% 46%;
+      background:
+        radial-gradient(circle at 50% 48%, rgba(255, 253, 248, 0) 58%, rgba(255, 253, 248, .92) 78%),
+        url("講師介紹.png") -1160px -210px / 1520px auto no-repeat;
+      box-shadow: 0 18px 45px rgba(18, 62, 42, .12);
+      border: 0;
+    }
+
+    .teacher img {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .teacher-name {
+      color: var(--gold);
+      font-size: 20px;
+      font-weight: 900;
+      margin: 8px 0 14px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .price-box {
+      background: var(--green-950);
+      color: white;
+      border-radius: 8px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .price-box h3 {
+      color: white;
+    }
+
+    .price {
+      font-size: 44px;
+      font-weight: 900;
+      line-height: 1;
+      margin: 10px 0;
+    }
+
+    .price span {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .notice {
+      background: #fff7e9;
+      border: 1px solid #eed8ad;
+      border-left: 7px solid var(--gold);
+      border-radius: 8px;
+      padding: 18px;
+    }
+
+    .payment-list {
+      display: grid;
+      gap: 8px;
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .payment-list li {
+      display: grid;
+      grid-template-columns: 86px minmax(0, 1fr);
+      gap: 10px;
+      border-bottom: 1px solid rgba(217, 184, 119, .45);
+      padding-bottom: 8px;
+    }
+
+    .payment-list span {
+      color: var(--green-850);
+      font-weight: 900;
+    }
+
+    .register {
+      background: linear-gradient(180deg, var(--green-950), #0e3121);
+      color: white;
+    }
+
+    .register h2,
+    .register h3 {
+      color: white;
+    }
+
+    .register .section-lead {
+      color: rgba(255, 255, 255, .78);
+    }
+
+    .register-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .register-card {
+      background: rgba(255, 255, 255, .1);
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 8px;
+      padding: 24px;
+    }
+
+    .register-card p {
+      color: rgba(255, 255, 255, .8);
+      margin: 8px 0 18px;
+    }
+
+    .register .btn {
+      border-color: white;
+      background: white;
+      color: var(--green-950);
+      width: 100%;
+    }
+
+    .signup-form {
+      display: grid;
+      gap: 18px;
+      background: rgba(255, 255, 255, .1);
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 8px;
+      padding: 24px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .field {
+      display: grid;
+      gap: 7px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .field.is-hidden {
+      display: none;
+    }
+
+    .field label {
+      font-weight: 900;
+      color: rgba(255, 255, 255, .92);
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, .28);
+      border-radius: 6px;
+      padding: 12px 13px;
+      font: inherit;
+      color: var(--ink);
+      background: rgba(255, 255, 255, .96);
+    }
+
+    .field textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .invoice-fields {
+      display: none;
+      grid-column: 1 / -1;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      padding: 16px;
+      border: 1px solid rgba(255, 255, 255, .2);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .08);
+    }
+
+    .invoice-fields.is-visible {
+      display: grid;
+    }
+
+    .help-text {
+      color: rgba(255, 255, 255, .72);
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .form-actions .btn {
+      width: auto;
+      min-width: 180px;
+      cursor: pointer;
+    }
+
+    .form-status {
+      color: rgba(255, 255, 255, .78);
+      margin: 0;
+    }
+
+    .orgs {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .org {
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, .18);
+      background: rgba(255, 255, 255, .08);
+    }
+
+    .org span {
+      display: block;
+      color: rgba(255, 255, 255, .68);
+      font-size: 14px;
+    }
+
+    footer {
+      background: #081d14;
+      color: rgba(255, 255, 255, .74);
+      padding: 24px 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .nav {
+        position: static;
+      }
+
+      .hero-grid,
+      .intro-copy,
+      .teacher,
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .teacher-photo {
+        width: min(260px, 100%);
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .cards,
+      .sessions,
+      .register-grid,
+      .orgs {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-points {
+        grid-template-columns: 1fr;
+      }
+
+      .day {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .nav-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .section {
+        padding: 50px 16px;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
+
+      .hero-subtitle {
+        font-size: 18px;
+      }
+
+      .actions .btn {
+        width: 100%;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .invoice-fields {
+        grid-template-columns: 1fr;
+      }
+
+      .payment-list li {
+        grid-template-columns: 1fr;
+      }
+
+      .price {
+        font-size: 36px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要內容</a>
+  <nav class="nav" aria-label="主要導覽">
+    <div class="nav-inner">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span>GHG Protocol 實算工作坊</div>
+      <div class="nav-links">
+        <a href="#sessions">梯次</a>
+        <a href="#course">課程內容</a>
+        <a href="#teacher">講師</a>
+        <a href="#pricing">費用</a>
+        <a href="#register">報名</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+    <section class="section hero">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">18 小時硬核實算｜從數據焦慮到 IFRS 實戰全攻略</p>
+          <h1>GHG Protocol 溫室氣體盤查實算工作坊</h1>
+          <p class="hero-subtitle">讓你的碳排數據，被盤點、被驗證、被管理。三天帶你完整走過 Scope 1、Scope 2 與 Scope 3 全部 15 類，上午建立方法，下午分組試算。</p>
+          <ul class="hero-points" aria-label="課程亮點">
+            <li>完整走過 Scope 1、2、3 盤查邏輯</li>
+            <li>掌握活動數據法與金額分配法</li>
+            <li>學會轉譯 IFRS S1/S2 揭露資料</li>
+            <li>帶走可套用的資料清單與表格架構</li>
+          </ul>
+          <div class="actions">
+            <a class="btn" href="#register">立即選擇梯次報名</a>
+            <a class="btn secondary" href="#course">查看三天課綱</a>
+          </div>
+        </div>
+        <aside class="hero-card" aria-label="課程海報">
+          <img class="poster" src="課程詳情.png" alt="GHG Protocol 溫室氣體盤查實算工作坊課程海報">
+          <p class="caption">課程採小班實作，建議自備筆電與可參考的企業資料類型。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="intro-band">
+      <div class="section intro-copy">
+        <div>
+          <h2>這堂課為誰而開</h2>
+          <p>當客戶開始要求碳資料、董事會開始關心 IFRS S1/S2、供應鏈問卷一題比一題細，企業需要的不只是「知道碳盤查很重要」，而是能真的把資料找出來、算出來、講清楚。</p>
+        </div>
+        <ul class="quote-list">
+          <li>「範疇 3 有 15 類？供應商和客戶的排放量我哪知道？」</li>
+          <li>「碳盤查居然要看會計科目？IFRS S1/S2 到底怎麼跟財務報表對接？」</li>
+          <li>「理論課聽了很多，但真的打開 Excel，我還是不知道第一格要填什麼。」</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="sessions" class="section">
+      <h2>兩梯次開課</h2>
+      <p class="section-lead">台北與台南皆為三天實體課程，每天 09:00–16:00，共 18 小時。名額上限 25 人。</p>
+      <div class="sessions">
+        <article class="session-card">
+          <div class="session-date">台北班｜7/3（五）– 7/5（日）</div>
+          <h3>國立台北大學民生校區</h3>
+          <ul class="meta">
+            <li>地址：台北市民生東路三段 67 號</li>
+            <li>時間：09:00–16:00</li>
+            <li>形式：上午理論講解，下午分組試算與實務演練</li>
+          </ul>
+          <a class="btn" href="#register">填寫台北班報名表</a>
+        </article>
+        <article class="session-card tainan">
+          <div class="session-date">台南班｜7/17（五）– 7/19（日）</div>
+          <h3>台南科學園區育成中心</h3>
+          <ul class="meta">
+            <li>地址：台南市新市區南科二路 12 號</li>
+            <li>時間：09:00–16:00</li>
+            <li>形式：上午理論講解，下午分組試算與實務演練</li>
+          </ul>
+          <a class="btn" href="#register">填寫台南班報名表</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>完成課程後，你將能做到</h2>
+      <p class="section-lead">這不是只有概念的入門課，而是面向企業盤查、供應鏈碳資料管理與永續揭露的實戰工作坊。</p>
+      <div class="cards">
+        <article class="card">
+          <h3>建立盤查架構</h3>
+          <p>理解 GHG Protocol 核心概念、組織邊界、營運邊界，以及 Scope 1、Scope 2、Scope 3 的分類邏輯。</p>
+        </article>
+        <article class="card">
+          <h3>算出碳排數據</h3>
+          <p>掌握活動數據、排放係數、碳排放量計算、活動數據法、金額分配法與估算邏輯的實務應用。</p>
+        </article>
+        <article class="card">
+          <h3>轉譯揭露語言</h3>
+          <p>把盤查結果應用於 ESG 報告書、IFRS S1/S2、董事會溝通與客戶供應鏈問卷回覆。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="course" class="section">
+      <h2>三天課程內容</h2>
+      <p class="section-lead">每天上午建立理論與方法架構，下午進行分組試算與案例演練，讓學員從資料收集走到初步盤查彙整。</p>
+      <div class="timeline">
+        <article class="day">
+          <div class="day-label">Day 1</div>
+          <div>
+            <h3>企業「碳」源起點：擒拿 Scope 1 & 2 營運巨獸</h3>
+            <p><strong>上午：</strong>組織邊界、營運邊界、Scope 1 四大排放源、Scope 2 外購電力與能源使用盤查，並理解 Location-based / Market-based 雙軌核算。</p>
+            <p><strong>下午：</strong>分組判定邊界、盤點 Scope 1 與 Scope 2 排放源，練習固定燃燒、移動燃燒、外購電力與逸散排放計算。</p>
+          </div>
+        </article>
+        <article class="day">
+          <div class="day-label">Day 2</div>
+          <div>
+            <h3>供應鏈「核」心揭秘：破解範疇 3 上游數據大爆發</h3>
+            <p><strong>上午：</strong>Scope 3 上游類別總覽，包含 C1–C4、C6–C7，理解供應商特定資料法、平均資料法、支出基礎法的選擇。</p>
+            <p><strong>下午：</strong>進行 C1–C4 上游供應鏈排放量試算，設計員工通勤與商務差旅資料收集問卷，建立上游類別資料清單。</p>
+          </div>
+        </article>
+        <article class="day">
+          <div class="day-label">Day 3</div>
+          <div>
+            <h3>永續戰場終結者：下游建模與 IFRS 報表全攻略</h3>
+            <p><strong>上午：</strong>Scope 3 下游類別與揭露應用，包含 C5、C8、C10–C13、C15，並學習 Inventory Summary 彙整方式。</p>
+            <p><strong>下午：</strong>分組進行下游類別建模與試算，完成企業 Inventory Summary 初步彙整，並練習盤查結果、資料假設與揭露邏輯簡報。</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="teacher" class="section">
+      <div class="teacher">
+        <div class="teacher-photo" role="img" aria-label="妮娜老師講師相片"></div>
+        <div>
+          <h2>講師介紹</h2>
+          <p class="teacher-name">艾恩永續中心（A&N Sustainability）妮娜老師</p>
+          <p>曜嶼永續發展有限公司創辦人，品牌包含森乃嶼、艾恩永續中心。具備 12 年以上科技產業 PM 經驗，熟悉企業內部跨部門溝通、資料整合與專案推動流程，最懂園區溝通語言。</p>
+          <ul class="plain-list">
+            <li>專長：ESG、碳管理、GHG Protocol、ISO 14064-1、ISO 14067、ISO 14068、ISO 50001 與企業永續揭露</li>
+            <li>擅長將國際標準轉譯為企業可執行的工作方法</li>
+            <li>以原住民身份與多元文化視角，延伸 SROI、社會影響力與共好策略</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>適合對象與課前準備</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>招生對象</h3>
+          <ul class="plain-list">
+            <li>企業 ESG、永續發展、環安衛、能源管理相關人員</li>
+            <li>正在準備溫室氣體盤查或碳管理制度的企業夥伴</li>
+            <li>需回覆客戶碳資料、供應鏈問卷或 ESG 評鑑之窗口</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>建議準備</h3>
+          <ul class="plain-list">
+            <li>自備筆電</li>
+            <li>可準備電費單、油單、冷媒紀錄、差旅資料、採購資料、物流資料等資料類型</li>
+            <li>若不方便攜帶實際資料，可使用課堂提供之範例資料演練</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>課後產出</h3>
+          <ul class="plain-list">
+            <li>一份溫室氣體盤查基礎架構</li>
+            <li>一套 Scope 1、Scope 2、Scope 3 分類邏輯</li>
+            <li>一份企業碳資料收集清單</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="pricing" class="section">
+      <h2>課程費用與繳費資訊</h2>
+      <div class="pricing-grid">
+          <div class="price-box">
+            <h3>個人報名</h3>
+            <div class="price">NT$9,000 <span>/ 人</span></div>
+            <p>6/20 前完成報名享早鳥優惠價 NT$8,500。</p>
+            <p>3 人同行團報，每人優惠價 NT$8,500。</p>
+            <p>CESSA 協會會員優惠價 NT$8,500。</p>
+          </div>
+        <div class="notice">
+          <h3>繳費資訊</h3>
+          <p>請完成報名表後再依下列資訊匯款。若需統編、收據或團報協助，請於表單備註或直接聯繫窗口。</p>
+          <ul class="payment-list">
+            <li><span>帳戶</span>熹堍永續股份有限公司</li>
+            <li><span>銀行</span>華南銀行（008）新市分行</li>
+            <li><span>帳號</span>648-10-011120-1</li>
+          </ul>
+          <p><strong>聯絡窗口：</strong>許小姐 0938-387170<br><strong>官方 LINE ID：</strong>@796doxmi</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="register" class="register">
+      <div class="section">
+        <h2>報名表</h2>
+        <p class="section-lead">請填寫以下資料並送出，報名內容將寄送至課程窗口信箱。名額有限，額滿即止。</p>
+        <form class="signup-form" id="signupForm" action="/api/register" method="post">
+          <div class="form-grid">
+            <div class="field">
+              <label for="session">報名梯次</label>
+              <select id="session" name="報名梯次" required>
+                <option value="">請選擇梯次</option>
+                <option value="台北班｜7/3（五）– 7/5（日）｜國立台北大學民生校區">台北班｜7/3–7/5｜國立台北大學民生校區</option>
+                <option value="台南班｜7/17（五）– 7/19（日）｜台南科學園區育成中心">台南班｜7/17–7/19｜台南科學園區育成中心</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="priceType">報名優惠方案</label>
+              <select id="priceType" name="報名優惠方案" required>
+                <option value="">請選擇方案</option>
+                <option value="早鳥優惠價 NT$8,500（6/20 前）">早鳥優惠價 NT$8,500（6/20 前）</option>
+                <option value="團報優惠價 NT$8,500（3 人同行，每人）">團報優惠價 NT$8,500（3 人同行，每人）</option>
+                <option value="CESSA 協會會員優惠價 NT$8,500">CESSA 協會會員優惠價 NT$8,500</option>
+                <option value="原價 NT$9,000">原價 NT$9,000</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="name">姓名</label>
+              <input id="name" name="姓名" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="phone">手機</label>
+              <input id="phone" name="手機" autocomplete="tel" required>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="Email" type="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="lineId">LINE ID</label>
+              <input id="lineId" name="LINE ID" placeholder="方便通知課程與繳費確認">
+            </div>
+            <div class="field">
+              <label for="company">公司 / 單位</label>
+              <input id="company" name="公司 / 單位" autocomplete="organization">
+            </div>
+            <div class="field">
+              <label for="title">職稱</label>
+              <input id="title" name="職稱">
+            </div>
+            <div class="field">
+              <label for="invoice">收據 / 發票需求</label>
+              <select id="invoice" name="收據 / 發票需求">
+                <option value="不需要開發票">不需要開發票</option>
+                <option value="需要開發票">需要開發票</option>
+                <option value="需另外聯繫確認">需另外聯繫確認</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="meal">飲食需求</label>
+              <select id="meal" name="飲食需求">
+                <option value="葷食">葷食</option>
+                <option value="素食">素食</option>
+                <option value="不需餐食">不需餐食</option>
+                <option value="特殊需求，填於備註">特殊需求，填於備註</option>
+              </select>
+            </div>
+            <div class="invoice-fields" id="invoiceFields">
+              <div class="field">
+                <label for="invoiceCompany">發票公司名稱</label>
+                <input id="invoiceCompany" name="發票公司名稱">
+              </div>
+              <div class="field">
+                <label for="taxId">統一編號</label>
+                <input id="taxId" name="統一編號" inputmode="numeric">
+              </div>
+              <div class="field">
+                <label for="invoiceAddress">發票地址</label>
+                <input id="invoiceAddress" name="發票地址">
+              </div>
+            </div>
+            <div class="field">
+              <label for="paidStatus">繳費狀態</label>
+              <select id="paidStatus" name="繳費狀態" required>
+                <option value="尚未繳費">尚未繳費</option>
+                <option value="已繳費">已繳費</option>
+              </select>
+            </div>
+            <div class="field is-hidden" id="transferField">
+              <label for="transferCode">轉帳後五碼</label>
+              <input id="transferCode" name="轉帳後五碼" inputmode="numeric" maxlength="5" pattern="[0-9]{5}" placeholder="請填寫 5 碼">
+            </div>
+            <div class="field full">
+              <label for="note">備註</label>
+              <textarea id="note" name="備註" placeholder="團報名單、特殊飲食需求、想先詢問的問題，都可以寫在這裡。"></textarea>
+            </div>
+          </div>
+          <p class="form-status" id="formStatus">送出前請確認資料正確；系統會將報名資料送至課程窗口信箱。</p>
+          <div class="form-actions">
+            <button class="btn" type="submit">送出報名表</button>
+          </div>
+        </form>
+        <div class="orgs" aria-label="辦理單位">
+          <div class="org"><span>主辦單位</span>中華環境安全永續協會（CESSA）</div>
+          <div class="org"><span>執行單位</span>熹堍永續股份有限公司</div>
+          <div class="org"><span>協辦單位</span>A & N 艾恩永續中心</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    GHG Protocol 溫室氣體盤查實算工作坊｜聯絡窗口：許小姐 0938-387170｜官方 LINE ID：@796doxmi
+  </footer>
+  <script>
+    const form = document.querySelector("#signupForm");
+    const invoiceSelect = document.querySelector("#invoice");
+    const invoiceFields = document.querySelector("#invoiceFields");
+    const invoiceInputs = invoiceFields.querySelectorAll("input");
+    const paidStatus = document.querySelector("#paidStatus");
+    const transferField = document.querySelector("#transferField");
+    const transferCode = document.querySelector("#transferCode");
+    const formStatus = document.querySelector("#formStatus");
+
+    function syncInvoiceFields() {
+      const needsInvoice = invoiceSelect.value === "需要開發票";
+      invoiceFields.classList.toggle("is-visible", needsInvoice);
+      invoiceInputs.forEach((input) => {
+        input.required = needsInvoice;
+      });
+    }
+
+    function syncTransferField() {
+      const isPaid = paidStatus.value === "已繳費";
+      transferField.classList.toggle("is-hidden", !isPaid);
+      transferCode.required = isPaid;
+    }
+
+    invoiceSelect.addEventListener("change", syncInvoiceFields);
+    paidStatus.addEventListener("change", syncTransferField);
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      syncInvoiceFields();
+      syncTransferField();
+      if (!form.reportValidity()) return;
+
+      const submitButton = form.querySelector("button[type='submit']");
+      const originalText = submitButton.textContent;
+      submitButton.disabled = true;
+      submitButton.textContent = "送出中";
+      formStatus.textContent = "資料送出中，請稍候...";
+
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(Object.fromEntries(new FormData(form).entries()))
+        });
+        const result = await response.json();
+        if (!response.ok) {
+          throw new Error(result.message || "送出失敗");
+        }
+        form.reset();
+        syncInvoiceFields();
+        syncTransferField();
+        formStatus.textContent = result.emailSent
+          ? "報名資料已送出，課程窗口將盡快與你確認。"
+          : "報名資料已送出並保存，課程窗口將盡快與你確認。";
+        submitButton.textContent = "已送出";
+      } catch (error) {
+        formStatus.textContent = "送出時發生問題，請稍後再試，或聯絡官方 LINE：@796doxmi。";
+        submitButton.textContent = originalText;
+      } finally {
+        submitButton.disabled = false;
+      }
+    });
+    syncInvoiceFields();
+    syncTransferField();
+  </script>
+</body>
+</html>
