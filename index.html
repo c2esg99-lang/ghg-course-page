@@ -1064,15 +1064,19 @@
 
       try {
         const formData = new FormData(form);
-        formData.append("payload", JSON.stringify(Object.fromEntries(formData.entries())));
+const params = new URLSearchParams();
 
-           await fetch(form.action, {
-            method: "POST",
-            mode: "no-cors",
-            body: formData
-          });
+for (const [key, value] of formData.entries()) {
+  params.append(key, value);
+}
 
-     const result = { emailSent: false };
+await fetch(form.action, {
+  method: "POST",
+  mode: "no-cors",
+  body: params
+});
+
+const result = { emailSent: false };
         form.reset();
         syncInvoiceFields();
         syncTransferField();
