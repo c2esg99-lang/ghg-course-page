@@ -1015,8 +1015,7 @@
         <div class="orgs" aria-label="辦理單位">
           <div class="org"><span>主辦單位</span>中華環境安全永續協會（CESSA）</div>
           <div class="org"><span>執行單位</span>熹堍永續股份有限公司</div>
-          <div class="org"><span>協辦單位</span>A & N 艾恩永續中心</div>
-          <div class="org"><span>協辦單位</span>中華數位行銷推廣協會</div>
+          <div class="org"><span>協辦單位</span>A & N 艾恩永續中心</div> </span>中華數位行銷推廣協會</div>         
         </div>
       </div>
     </section>
@@ -1081,7 +1080,7 @@
           : "報名資料已送出並保存，課程窗口將盡快與你確認。";
         submitButton.textContent = "已送出";
       } catch (error) {
-        formStatus.textContent = "報名資料已送出。請不要重複填寫，我們將依您留下的繳費資訊進行確認；若需確認報名狀態，請聯絡官方 LINE：@796doxmi。";
+        formStatus.textContent = "報名資料未成功送出，請先不要重複填寫，請聯絡官方 LINE：@796doxmi 協助確認。";
         submitButton.textContent = originalText;
       } finally {
         submitButton.disabled = false;
