@@ -391,7 +391,7 @@
       border-radius: 50% 50% 46% 46%;
       background:
         radial-gradient(circle at 50% 48%, rgba(255, 253, 248, 0) 58%, rgba(255, 253, 248, .92) 78%),
-        url("./1131217B013彭絹倪012肖像.jpg") center 32% / cover no-repeat;
+        url("講師介紹.png") -1160px -210px / 1520px auto no-repeat;
       box-shadow: 0 18px 45px rgba(18, 62, 42, .12);
       border: 0;
     }
@@ -761,15 +761,14 @@
 
     <section id="sessions" class="section">
       <h2>兩梯次開課</h2>
-      <p class="section-lead">台北與台南皆為三天實體課程，每天 09:30–16:30，共 18 小時。名額上限 25 人。</p>
+      <p class="section-lead">台北與台南皆為三天實體課程，每天 09:00–16:00，共 18 小時。名額上限 25 人。</p>
       <div class="sessions">
         <article class="session-card">
           <div class="session-date">台北班｜7/3（五）– 7/5（日）</div>
           <h3>國立台北大學民生校區</h3>
           <ul class="meta">
-            <li>地址：台北市民生東路三段 67 號 </li>
-            <li>教室：教學大樓9樓 A9F03 </li>
-            <li>時間：09:30–16:30</li>
+            <li>地址：台北市民生東路三段 67 號</li>
+            <li>時間：09:00–16:00</li>
             <li>形式：上午理論講解，下午分組試算與實務演練</li>
           </ul>
           <a class="btn" href="#register">填寫台北班報名表</a>
@@ -778,9 +777,8 @@
           <div class="session-date">台南班｜7/17（五）– 7/19（日）</div>
           <h3>台南科學園區育成中心</h3>
           <ul class="meta">
-            <li>地址：台南市新市區南科二路 12 號 </li>
-            <li>教室：B104  </li>
-            <li>時間：09:30–16:30</li>
+            <li>地址：台南市新市區南科二路 12 號</li>
+            <li>時間：09:00–16:00</li>
             <li>形式：上午理論講解，下午分組試算與實務演練</li>
           </ul>
           <a class="btn" href="#register">填寫台南班報名表</a>
@@ -843,10 +841,8 @@
         <div class="teacher-photo" role="img" aria-label="妮娜老師講師相片"></div>
         <div>
           <h2>講師介紹</h2>
-          <p class="teacher-name">艾恩永續中心（A&N Sustainability）妮娜老師</p>  
-           <p>擁有 12 年以上科技產業業務與專案管理（PM）經驗</p>  
-           <p>擅長結合品牌策略、數據洞察與跨文化溝通</p>  
-           <p>協助企業在永續發展與市場拓展之間找到最具競爭力的平衡點</p>  
+          <p class="teacher-name">艾恩永續中心（A&N Sustainability）妮娜老師</p>
+          <p>曜嶼永續發展有限公司創辦人，品牌包含森乃嶼、艾恩永續中心。具備 12 年以上科技產業 PM 經驗，熟悉企業內部跨部門溝通、資料整合與專案推動流程，最懂園區溝通語言。</p>
           <ul class="plain-list">
             <li>專長：ESG、碳管理、GHG Protocol、ISO 14064-1、ISO 14067、ISO 14068、ISO 50001 與企業永續揭露</li>
             <li>擅長將國際標準轉譯為企業可執行的工作方法</li>
@@ -898,18 +894,13 @@
           </div>
         <div class="notice">
           <h3>繳費資訊</h3>
-          <p>請於填寫報名表時同步完成繳費，並於表單中提供匯款帳號後五碼，以利核對款項。若需統編、收據或團報協助，請於表單備註或直接聯繫窗口。</p>
+          <p>請完成報名表後再依下列資訊匯款。若需統編、收據或團報協助，請於表單備註或直接聯繫窗口。</p>
           <ul class="payment-list">
-            <li><span>帳戶</span>曜嶼永續發展有限公司</li>
-            <li><span>銀行</span>永豐銀行 萬華分行</li>
-            <li><span>帳號</span>105-018-00051854</li>
+            <li><span>帳戶</span>熹堍永續股份有限公司</li>
+            <li><span>銀行</span>華南銀行（008）新市分行</li>
+            <li><span>帳號</span>648-10-011120-1</li>
           </ul>
-          <p>
-            <strong>台北場窗口：</strong>李先生 0930-054797<br>
-            <strong>台北場 LINE ID：</strong>@611abqjl<br>
-            <strong>台南場窗口：</strong>許小姐 0938-387171<br>
-            <strong>台南場 LINE ID：</strong>@796doxmi
-          </p>
+          <p><strong>聯絡窗口：</strong>許小姐 0938-387170<br><strong>官方 LINE ID：</strong>@796doxmi</p>
         </div>
       </div>
     </section>
@@ -918,7 +909,7 @@
       <div class="section">
         <h2>報名表</h2>
         <p class="section-lead">請填寫以下資料並送出，報名內容將寄送至課程窗口信箱。名額有限，額滿即止。</p>
-        <form class="signup-form" id="signupForm" action="https://script.google.com/macros/s/AKfycbxBUDjDA_3JiAgkULgPjk2t7DN1GGHqVhUGuBj540JlWHfkeagIB45RLrfXA8HFq2BxrQ/exec" method="post">
+        <form class="signup-form" id="signupForm" action="/api/register" method="post">
           <div class="form-grid">
             <div class="field">
               <label for="session">報名梯次</label>
@@ -965,7 +956,6 @@
             <div class="field">
               <label for="invoice">收據 / 發票需求</label>
               <select id="invoice" name="收據 / 發票需求">
-                <option value="不需要開發票">不需要開發票</option>
                 <option value="需要開發票">需要開發票</option>
                 <option value="需另外聯繫確認">需另外聯繫確認</option>
               </select>
@@ -1009,7 +999,7 @@
               <textarea id="note" name="備註" placeholder="團報名單、特殊飲食需求、想先詢問的問題，都可以寫在這裡。"></textarea>
             </div>
           </div>
-          <p class="form-status" id="formStatus">送出前請確認資料正確。</p>
+          <p class="form-status" id="formStatus">送出前請確認資料正確；系統會將報名資料送至課程窗口信箱。</p>
           <div class="form-actions">
             <button class="btn" type="submit">送出報名表</button>
           </div>
@@ -1017,7 +1007,7 @@
         <div class="orgs" aria-label="辦理單位">
           <div class="org"><span>主辦單位</span>中華環境安全永續協會（CESSA）</div>
           <div class="org"><span>執行單位</span>熹堍永續股份有限公司</div>
-          <div class="org"><span>協辦單位</span>A & N 艾恩永續中心、中華數位行銷推廣協會</div>         
+          <div class="org"><span>協辦單位</span>A & N 艾恩永續中心</div>
         </div>
       </div>
     </section>
@@ -1065,20 +1055,15 @@
       formStatus.textContent = "資料送出中，請稍候...";
 
       try {
-        const formData = new FormData(form);
-const params = new URLSearchParams();
-
-for (const [key, value] of formData.entries()) {
-  params.append(key, value);
-}
-
-await fetch(form.action, {
-  method: "POST",
-  mode: "no-cors",
-  body: params
-});
-
-const result = { emailSent: false };
+        const response = await fetch(form.action, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(Object.fromEntries(new FormData(form).entries()))
+        });
+        const result = await response.json();
+        if (!response.ok) {
+          throw new Error(result.message || "送出失敗");
+        }
         form.reset();
         syncInvoiceFields();
         syncTransferField();
@@ -1087,7 +1072,7 @@ const result = { emailSent: false };
           : "報名資料已送出並保存，課程窗口將盡快與你確認。";
         submitButton.textContent = "已送出";
       } catch (error) {
-        formStatus.textContent = "報名資料未成功送出，請先不要重複填寫，請聯絡官方 LINE：@796doxmi 協助確認。";
+        formStatus.textContent = "送出時發生問題，請稍後再試，或聯絡官方 LINE：@796doxmi。";
         submitButton.textContent = originalText;
       } finally {
         submitButton.disabled = false;
